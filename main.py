@@ -23,6 +23,16 @@ def continue_access():
         else:
             print("Please enter 'Y' for Yes or 'N' for No.")
 
+def get_boolean_input(message):
+    while True:
+        user_input = input(message + " (True/False): ").lower()
+        if user_input == "true":
+            return True
+        elif user_input == "false":
+            return False
+        else:
+            print("Please enter 'True' or 'False'.")
+
 still_access = True
 while still_access:
     # Menu options for CRUD operations
@@ -42,7 +52,8 @@ while still_access:
 
     # Execute the corresponding function based on user input
     if selected_option.lower() == "create":
-        new_data_employee(True)
+        auto_input = get_boolean_input("Do you want to use auto input for testing?") # Ask for input to use True or False as a parameter
+        new_data_employee(auto_input)
         still_access = continue_access()
     elif selected_option.lower() == "read":
         read_data_employee()
